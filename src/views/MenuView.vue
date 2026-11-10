@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { categories, diets, menu, type Diet } from '@/data/menu'
+import { categoryPhotos, photo } from '@/data/content'
 
 const { t, locale } = useI18n()
 const filters = ref<Diet[]>([])
@@ -9,6 +10,9 @@ const filtered = computed(() => categories.map(id => ({
   id,
   dishes: menu.filter(dish => dish.category === id && filters.value.every(diet => dish.diets.includes(diet))),
 })).filter(category => category.dishes.length > 0))
+const scrollTo = (id: string): void => {
+  document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' })
+}
 const price = (amount: number) => new Intl.NumberFormat(locale.value, { style: 'currency', currency: 'EUR' }).format(amount)
 </script>
 
@@ -29,10 +33,11 @@ const price = (amount: number) => new Intl.NumberFormat(locale.value, { style: '
       </div>
     </fieldset>
     <nav v-if="filtered.length" class="menu-index" :aria-label="t('menu.categories')">
-      <a v-for="category in filtered" :key="category.id" :href="`#${category.id}`">{{ t(`menu.category.${category.id}`) }}</a>
+      <button v-for="category in filtered" :key="category.id" type="button" @click="scrollTo(category.id)">{{ t(`menu.category.${category.id}`) }}</button>
     </nav>
     <div class="menu-grid">
       <section v-for="category in filtered" :id="category.id" :key="category.id" class="menu-section">
+        <img v-if="categoryPhotos[category.id]" :src="photo(categoryPhotos[category.id]!)" alt="" width="1024" height="1024" loading="lazy" class="menu-photo" />
         <h2>{{ t(`menu.category.${category.id}`) }}</h2>
         <ul>
           <li v-for="dish in category.dishes" :key="dish.id" class="menu-dish">

@@ -46,4 +46,4 @@ export const menu: readonly Dish[] = [
   { id: 'lemonade', category: 'drinks', price: 4, el: ['Σπιτική λεμονάδα', 'Φρέσκο λεμόνι και δυόσμος'], en: ['House lemonade', 'Fresh lemon and mint'], diets: all },
 ]
 
-export const signature = ['octopus', 'moussaka', 'fava'].map(id => menu.find(dish => dish.id === id)!)
+export const signature = ['sea-bream', 'moussaka', 'pork'].map(id => menu.find(dish => dish.id === id)!)

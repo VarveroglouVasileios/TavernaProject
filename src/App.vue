@@ -3,11 +3,12 @@ import { useI18n } from 'vue-i18n'
 import { setLocale } from '@/i18n'
 
 const { t, locale } = useI18n()
+const focusMain = (): void => document.getElementById('content')?.focus()
 </script>
 
 <template>
   <div class="flex min-h-screen flex-col">
-    <a href="#content" class="skip">{{ t('nav.skip') }}</a>
+    <button type="button" class="skip" @click="focusMain">{{ t('nav.skip') }}</button>
     <p class="demo-banner">{{ t('demo') }}</p>
     <header class="site-header">
       <div class="shell header-inner">
@@ -32,7 +33,7 @@ const { t, locale } = useI18n()
     <footer class="site-footer">
       <div class="shell footer-inner">
         <span class="footer-brand">Taverna Meltemi</span>
-        <p>Designed and built by Vasileios Varveroglou</p>
+        <p class="footer-credit">{{ t('footer.credit') }}<br />{{ t('footer.ai') }}</p>
         <RouterLink to="/admin">{{ t('nav.admin') }}</RouterLink>
       </div>
     </footer>

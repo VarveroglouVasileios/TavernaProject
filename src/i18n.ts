@@ -1,15 +1,16 @@
 import { createI18n } from 'vue-i18n'
+import { extra } from './i18n-extra'
 
-export const messages = {
+const baseMessages = {
   el: {
     demo: 'Demo concept · Φανταστική επιχείρηση',
     nav: { label: 'Κύρια πλοήγηση', home: 'Αρχική', menu: 'Μενού', book: 'Κράτηση', admin: 'Διαχείριση', language: 'Switch to English', skip: 'Μετάβαση στο περιεχόμενο' },
     home: {
       location: 'Καβάλα, δίπλα στο κύμα', title: 'Τραπέζι με θέα στη θάλασσα.',
       intro: 'Σπιτικά μαγειρευτά, ψάρι στη σχάρα και κρασί από τον τόπο μας. Από την οικογένειά μας, στο τραπέζι σας.',
-      find: 'Βρες τραπέζι', hoursLabel: 'Ώρες λειτουργίας', hours: 'Καθημερινά 13:00–23:30',
+      find: 'Βρείτε τραπέζι', hoursLabel: 'Ώρες λειτουργίας', hours: 'Καθημερινά 13:00–23:30',
       addressLabel: 'Διεύθυνση', address: 'Ακτή Μελτεμιού 14, Καβάλα (ενδεικτική διεύθυνση)',
-      signature: 'Από την κουζίνα μας', fullMenu: 'Δες όλο το μενού', info: 'Ώρες και διεύθυνση',
+      signature: 'Από την κουζίνα μας', fullMenu: 'Δείτε όλο το μενού', info: 'Ώρες και διεύθυνση',
     },
     menu: {
       title: 'Το μενού μας', intro: 'Μικρά πιάτα για τη μέση, φαγητό στα κάρβουνα και μαγειρευτά όπως στο σπίτι.',
@@ -19,24 +20,24 @@ export const messages = {
       diet: { vegetarian: 'Vegetarian', fasting: 'Νηστίσιμο', glutenFree: 'Χωρίς γλουτένη' },
     },
     book: {
-      title: 'Κράτηση τραπεζιού', intro: 'Διάλεξε ημερομηνία και ώρα. Το τραπέζι κρατείται για 90 λεπτά.',
+      title: 'Κράτηση τραπεζιού', intro: 'Διαλέξτε ημερομηνία και ώρα. Το τραπέζι κρατείται για 90 λεπτά.',
       date: 'Ημερομηνία', party: 'Άτομα', time: 'Διαθέσιμες ώρες', hours: 'Ώρα Καβάλας', more: 'Πάνω από 10 άτομα',
-      noTimes: 'Δεν υπάρχουν διαθέσιμες ώρες. Δοκίμασε άλλη ημερομηνία ή μικρότερη παρέα.',
+      noTimes: 'Δεν υπάρχουν διαθέσιμες ώρες. Δοκιμάστε άλλη ημερομηνία ή μικρότερη παρέα.',
       details: 'Στοιχεία κράτησης', name: 'Ονοματεπώνυμο', phone: 'Κινητό τηλέφωνο', email: 'Email (προαιρετικό)', notes: 'Σχόλια (προαιρετικά)',
       phoneHint: 'Ελληνικό κινητό, π.χ. 6912345678 ή +30 6912345678.',
       submit: 'Επιβεβαίωση κράτησης', busy: 'Έλεγχος διαθεσιμότητας…',
     },
     error: {
-      date: 'Επίλεξε έγκυρη ημερομηνία.', past: 'Επίλεξε ημερομηνία και ώρα που δεν έχουν περάσει.',
-      largeParty: 'Για παρέες άνω των 10 ατόμων, καλέστε μας.', party: 'Επίλεξε από 1 έως 10 άτομα.',
-      time: 'Επίλεξε μία από τις διαθέσιμες ώρες.', soldOut: 'Η ώρα μόλις γέμισε. Επίλεξε άλλη διαθέσιμη ώρα.',
-      name: 'Συμπλήρωσε το ονοματεπώνυμό σου.', phone: 'Συμπλήρωσε έγκυρο ελληνικό κινητό με 10 ψηφία που αρχίζει από 69.',
-      email: 'Συμπλήρωσε έγκυρο email ή άφησε το πεδίο κενό.',
+      date: 'Επιλέξτε έγκυρη ημερομηνία.', past: 'Επιλέξτε ημερομηνία και ώρα που δεν έχουν περάσει.',
+      largeParty: 'Για παρέες άνω των 10 ατόμων, καλέστε μας.', party: 'Επιλέξτε από 1 έως 10 άτομα.',
+      time: 'Επιλέξτε μία από τις διαθέσιμες ώρες.', soldOut: 'Η ώρα μόλις γέμισε. Επιλέξτε άλλη διαθέσιμη ώρα.',
+      name: 'Συμπληρώστε το ονοματεπώνυμό σας.', phone: 'Συμπληρώστε έγκυρο ελληνικό κινητό με 10 ψηφία που αρχίζει από 69.',
+      email: 'Συμπληρώστε έγκυρο email ή άφησε το πεδίο κενό.',
     },
     confirmation: {
-      title: 'Το τραπέζι σου κρατήθηκε', reference: 'Κωδικός κράτησης',
+      title: 'Το τραπέζι σας κρατήθηκε', reference: 'Κωδικός κράτησης',
       preview: 'Προεπισκόπηση μηνύματος', previewHint: 'Ενδεικτικό μήνυμα του demo.',
-      message: 'Γεια σου {name}, σε περιμένουμε στο Taverna Meltemi στις {date}, ώρα {time}, για {party} άτομα. Ο κωδικός κράτησής σου είναι {ref}.',
+      message: 'Γεια σας {name}, σας περιμένουμε στο Taverna Meltemi στις {date}, ώρα {time}, για {party} άτομα. Ο κωδικός κράτησής σας είναι {ref}.',
       missing: 'Η κράτηση δεν βρέθηκε σε αυτόν τον browser.', cancelled: 'Η κράτηση ακυρώθηκε', back: 'Πίσω στην αρχική',
     },
     admin: {
@@ -97,6 +98,21 @@ export const messages = {
       updated: 'Booking status updated.', restored: 'Demo data restored.', actions: 'Actions',
     },
   },
+}
+
+type Tree = { [key: string]: string | Tree }
+const deepMerge = (x: Tree, y: Tree): Tree => {
+  const out: Tree = { ...x }
+  for (const [key, value] of Object.entries(y)) {
+    const current = out[key]
+    out[key] = typeof value === 'object' && typeof current === 'object' ? deepMerge(current, value) : value
+  }
+  return out
+}
+
+export const messages = {
+  el: deepMerge(baseMessages.el as Tree, extra.el as Tree),
+  en: deepMerge(baseMessages.en as Tree, extra.en as Tree),
 }
 
 function savedLocale() {

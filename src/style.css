@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Alegreya Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   color: #14213d;
   background: #fbfaf5;
   --ink: #14213d;
@@ -15,13 +15,13 @@
   --muted: #45546b;
   --line: #cbd5e6;
   --error: #932e24;
-  --serif: 'Young Serif', Georgia, 'Times New Roman', serif;
+  --serif: 'Alegreya', Georgia, 'Times New Roman', serif;
 }
 
-html { scroll-padding-top: 1rem; }
+html { scroll-padding-top: 1rem; font-size: 106.25%; }
 body { margin: 0; }
 :focus-visible { outline: 2px solid #1f5bbf; outline-offset: 3px; }
-h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.1; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.08; }
 h2 { font-size: clamp(1.65rem, 4vw, 2.5rem); }
 a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 button:disabled { cursor: wait; opacity: .65; }

@@ -34,6 +34,7 @@ const focusMain = (): void => document.getElementById('content')?.focus()
       <div class="shell footer-inner">
         <span class="footer-brand">Taverna Meltemi</span>
         <p class="footer-credit">{{ t('footer.credit') }}<br />{{ t('footer.ai') }}</p>
+        <RouterLink to="/privacy">{{ locale === 'en' ? 'Privacy and cookies' : 'Απόρρητο και cookies' }}</RouterLink>
         <RouterLink to="/admin">{{ t('nav.admin') }}</RouterLink>
       </div>
     </footer>
